@@ -1,0 +1,13 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+
+RUN npm install
+
+#This copy will not need if you use docker-compose because the command is already there. 
+#But let it be like this so that we still can run the app using docker command.
+COPY . .
+
+CMD ["npm", "run", "start"]
